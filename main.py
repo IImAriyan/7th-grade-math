@@ -6,6 +6,7 @@ class Mathematics :
         self.calculates = {}
         self.calculates['getting_two_numbers_together'] = []
         self.calculates['getting_three_numbers_together'] = []
+        self.calculates['get_all_two_numbers_mods'] = []
 
 
     def randomNumber(self,min:int,max:int):
@@ -16,6 +17,22 @@ class Mathematics :
     """
     guess strategy
     """
+
+
+    def get_all_two_numbers_mods(self,total:int):
+        while len(self.calculates['get_all_two_numbers_mods']) < total + 1:
+            mode = []
+            guess = self.randomNumber(min=0,max=total)
+            guess2 = self.randomNumber(min=0,max=total)
+            if not [guess,guess2] in self.calculates['get_all_two_numbers_mods'] and (guess + guess2) == total:
+                mode.append(guess)
+                mode.append(guess2)
+                self.calculates['get_all_two_numbers_mods'].append(mode)
+
+        calculated = self.calculates['get_all_two_numbers_mods']
+        self.calculates['get_all_two_numbers_mods'] = []
+        return len(calculated)
+
 
 
 
@@ -74,10 +91,10 @@ class Mathematics :
 math = Mathematics()
 
 
-math.getting_three_numbers_together(78,11)
-math.getting_two_numbers_together(10,11)
 
-10*7 + 1
+print(math.get_all_two_numbers_mods(80))
+
+
 
 
 
