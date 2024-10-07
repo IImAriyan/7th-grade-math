@@ -1,4 +1,5 @@
 import random
+import time
 
 
 class Mathematics :
@@ -7,6 +8,7 @@ class Mathematics :
         self.calculates['getting_two_numbers_together'] = []
         self.calculates['getting_three_numbers_together'] = []
         self.calculates['get_all_two_numbers_mods'] = []
+        self.calculates['get_all_three_numbers_mods'] = []
 
 
     def randomNumber(self,min:int,max:int):
@@ -32,6 +34,17 @@ class Mathematics :
         calculated = self.calculates['get_all_two_numbers_mods']
         self.calculates['get_all_two_numbers_mods'] = []
         return len(calculated)
+
+
+
+    def get_all_three_numbers_mods(self,total:int) :
+        count = 0
+        for a in range(total + 1):
+            for b in range(total + 1 - a):
+                c = total - a - b
+                if c >= 0 :
+                    count += 1
+        return count
 
 
 
@@ -92,7 +105,7 @@ math = Mathematics()
 
 
 
-print(math.get_all_two_numbers_mods(80))
+print(math.get_all_three_numbers_mods(50))
 
 
 
